@@ -7,6 +7,7 @@ def KUniqueCharacters(strParam):
 	k = int(strParam[0])
 	ans = ''
 	
+	# TODO: extract the inner for-loop
 	substr = strParam[1:]
 	for i in range(substr.__len__()):
 		temp = substr[i:]
