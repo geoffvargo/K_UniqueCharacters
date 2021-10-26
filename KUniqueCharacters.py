@@ -3,34 +3,47 @@ from termcolor import colored
 
 def KUniqueCharacters(strParam):
 	# code goes here
-	# print(f'strParam is of {type(strParam)}')
-	# TODO: extract the inner for-loop
-	
 	k = int(strParam[0])
 	
-	print(f'k = {k}')
+	# print(f'k = {k}')
 	
 	ans = []
 	curr = ''
 	count = 0
 	
-	substr = strParam[1:]
-	for i in range(substr.__len__()):
-		if substr[i] in curr:
-			curr += substr[i]
-		else:
-			if count < k:
-				curr += substr[i]
-				count += 1
+	s1 = strParam[1:]
+	for i in range(s1.__len__()):
+		s2 = s1[i:]
+		for j in range(s2.__len__()):
+			if s2[j] in curr:
+				curr += s2[j]
 			else:
-				ans.append(curr)
-				count = 0
-				curr = ''
-	# print(f'curr = {curr}')
-	print(f'ans = {ans}')
+				if count < k:
+					curr += s2[j]
+					count += 1
+				else:
+					ans.append(curr)
+					count = 0
+					curr = ''
+					break
 	
-	# for i in range(substr.__len__()):
-	# 	temp = substr[i:]
+	# for i in range(s1.__len__()):
+	# 	if s1[i] in curr:
+	# 		curr += s1[i]
+	# 	else:
+	# 		if count < k:
+	# 			curr += s1[i]
+	# 			count += 1
+	# 		else:
+	# 			ans.append(curr)
+	# 			count = 0
+	# 			curr = ''
+	
+	# print(f'curr = {curr}')
+	# print(f'ans = {ans}')
+	
+	# for i in range(s1.__len__()):
+	# 	temp = s1[i:]
 	# 	count = 0
 	# 	curr = ''
 	# 	for j in range(temp.__len__()):
@@ -44,7 +57,7 @@ def KUniqueCharacters(strParam):
 	# 	if curr.__len__() > ans.__len__():
 	# 		ans = curr
 	
-	return ans
+	return sorted(ans, key=len, reverse=True)[0]
 
 
 if __name__ == "__main__":
